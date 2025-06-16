@@ -19,7 +19,7 @@ namespace Orders.Backend.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
-                {
+                { 
                     table.PrimaryKey("PK_Countries", x => x.Id);
                 });
 

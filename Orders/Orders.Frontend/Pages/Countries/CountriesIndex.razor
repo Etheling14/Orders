@@ -1,0 +1,34 @@
+﻿@page "/countries"
+@using Orders.Shared.Entities
+@inject IRepository repository
+
+<h3>Paises</h3>
+
+
+<table class="table  table=striped">
+    <thead>
+        <tr>
+            <th>País</th>
+            <th>    </th>
+        </tr>
+    </thead>
+    <tbody>
+       
+         <tr>
+            <th>Colombia</th>
+          </tr>
+          <tr>
+            <th>Argentina</th>
+          </tr>
+        <tr>
+            <th>Italia</th>
+        </tr>
+        <tr>
+            <th>Perú</th>
+        </tr>
+      
+    </tbody>
+</table>
+@code {
+    public List<Country>? Countries { get; set; }
+}

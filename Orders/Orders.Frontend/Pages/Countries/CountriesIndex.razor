@@ -4,31 +4,47 @@
 
 <h3>Paises</h3>
 
+@if(Countries == null)
+{
+    <p>Cargando...</p>
+}
+else
+{
+<GenericList MyList="Countries">
+    <Body>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>País</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var country in Countries!)
+                {
+                    <tr>
+                        <td>
+                            @country.Name
+                        </td>
+                        <td>
+                            <a class="btn btn-warning">Editar</a>
+                            <button class="btn btn-danger">Borrar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Body>
+</GenericList>
+}
 
-<table class="table  table=striped">
-    <thead>
-        <tr>
-            <th>País</th>
-            <th>    </th>
-        </tr>
-    </thead>
-    <tbody>
-       
-         <tr>
-            <th>Colombia</th>
-          </tr>
-          <tr>
-            <th>Argentina</th>
-          </tr>
-        <tr>
-            <th>Italia</th>
-        </tr>
-        <tr>
-            <th>Perú</th>
-        </tr>
-      
-    </tbody>
-</table>
+
 @code {
     public List<Country>? Countries { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        var responseHppt = await repository.GetAsync<List<Country>>("api/countries");
+        Countries = responseHppt.Response;
+    }
 }
